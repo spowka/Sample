@@ -1,0 +1,13 @@
+<mat-toolbar color="primary" class="mat-elevation-z10">
+  <mat-toolbar-row class="header-container">
+    <div class="header-wrapper">
+      <span class="header-title">Angular Challenge</span>
+      <a [routerLink]="['/users']" routerLinkActive="router-link-active">Users List</a>
+      <a [routerLink]="['/jobs']" routerLinkActive="router-link-active">Jobs List</a>
+    </div>
+
+    <div class="header-wrapper">
+      <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">favorite</mat-icon>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

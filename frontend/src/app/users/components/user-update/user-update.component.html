@@ -1,0 +1,94 @@
+<div class="page-container">
+  <div class="actions-tab left">
+    <button mat-raised-button color="primary" [routerLink]="['/users']">
+      <mat-icon>keyboard_arrow_left</mat-icon>
+      <span>Back</span>
+    </button>
+  </div>
+  <div class="table-container">
+    <mat-horizontal-stepper #stepper>
+      <mat-step [stepControl]="userForm">
+        <div class="step-wrapper">
+          <form [formGroup]="userForm">
+            <ng-template matStepLabel>User name</ng-template>
+            <mat-form-field>
+              <input matInput placeholder="Name" formControlName="name">
+            </mat-form-field>
+            <div>
+              <button mat-stroked-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </div>
+      </mat-step>
+      <mat-step [stepControl]="userForm">
+        <div class="step-wrapper">
+          <form [formGroup]="userForm">
+            <ng-template matStepLabel>User date of birth</ng-template>
+            <mat-form-field>
+              <input matInput [matDatepicker]="picker" placeholder="Date of birth" formControlName="dateOfBirth">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <div>
+              <button mat-stroked-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </div>
+      </mat-step>
+      <mat-step [stepControl]="userForm">
+        <div class="step-wrapper">
+          <form [formGroup]="userForm">
+            <ng-template matStepLabel>User email</ng-template>
+            <mat-form-field>
+              <input type="email" matInput placeholder="Email" formControlName="email">
+            </mat-form-field>
+            <div>
+              <button mat-stroked-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </div>
+      </mat-step>
+      <mat-step [stepControl]="userForm">
+        <div class="step-wrapper">
+          <form [formGroup]="userForm">
+            <ng-template matStepLabel>Select user status</ng-template>
+            <mat-form-field>
+              <mat-select placeholder="User status" formControlName="status" name="status">
+                <mat-option *ngFor="let status of userStatuses" [value]="status">
+                  {{status}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div>
+              <button mat-stroked-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </div>
+      </mat-step>
+      <mat-step [stepControl]="userForm">
+        <div class="step-wrapper">
+          <form [formGroup]="userForm">
+            <ng-template matStepLabel>Hourly rate</ng-template>
+            <mat-form-field>
+              <input type="number" matInput placeholder="Hourly rate" formControlName="hourlyRate">
+            </mat-form-field>
+            <div>
+              <button mat-stroked-button matStepperPrevious>Back</button>
+              <button mat-stroked-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </div>
+      </mat-step>
+      <mat-step>
+        <div class="step-wrapper">
+          <ng-template matStepLabel>Done</ng-template>
+          <p>You are now done.</p>
+          <div>
+            <button mat-raised-button color="primary" [disabled]="!userForm.valid" (click)="onSave()">Save</button>
+            <button mat-stroked-button matStepperPrevious>Back</button>
+          </div>
+        </div>
+      </mat-step>
+    </mat-horizontal-stepper>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+.actions-tab,
+mat-card {
+  max-width: 400px;
+}
+
+mat-card-content {
+  display: flex;
+  flex-direction: column;
+
+  span {
+    width: 100%;
+    opacity: .7;
+
+    &:not(:last-child) {
+      margin-bottom: 5px;
+    }
+  }
+}

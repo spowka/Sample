@@ -1,0 +1,27 @@
+<div class="page-container">
+  <div class="actions-tab left">
+    <button mat-raised-button color="primary" [routerLink]="['/jobs']">
+      <mat-icon>keyboard_arrow_left</mat-icon>
+      <span>Back</span>
+    </button>
+  </div>
+
+  <div *ngIf="isLoading$ | async" class="loading-spinner">
+    <mat-progress-spinner color="primary" mode="indeterminate">
+    </mat-progress-spinner>
+  </div>
+
+  <mat-card *ngIf="job">
+    <mat-card-header>
+      <mat-card-title>{{ job.title }}</mat-card-title>
+      <mat-card-subtitle>Job #{{ job.id }}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="assets/images/job.jpg">
+    <mat-card-content>
+      <p>
+        {{ job.description || 'No description' }}
+      </p>
+      <span>{{ job.createdAt | date: 'd MMMM y' }}</span>
+    </mat-card-content>
+  </mat-card>
+</div>
